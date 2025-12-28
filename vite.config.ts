@@ -9,7 +9,6 @@ import { vitePluginManusRuntime } from "vite-plugin-manus-runtime";
 const plugins = [react(), tailwindcss(), vitePluginManusRuntime()];
 
 export default defineConfig({
-  root: import.meta.dirname,
   plugins,
   resolve: {
     alias: {
