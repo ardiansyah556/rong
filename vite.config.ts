@@ -1,3 +1,4 @@
+
 import { jsxLocPlugin } from "@builder.io/vite-plugin-jsx-loc";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
@@ -10,7 +11,6 @@ const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(
 
 export default defineConfig({
   plugins,
-  root: path.resolve(import.meta.dirname, "client"),
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "client", "src"),
@@ -20,8 +20,11 @@ export default defineConfig({
   },
   envDir: path.resolve(import.meta.dirname),
   build: {
-    outDir: path.resolve(import.meta.dirname, "dist"),
+    outDir: "dist",
     emptyOutDir: true,
+    rollupOptions: {
+      input: path.resolve(import.meta.dirname, "client/index.html"),
+    },
   },
   server: {
     port: 3000,
